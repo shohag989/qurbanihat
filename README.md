@@ -6,13 +6,13 @@ A modern and responsive livestock booking platform where users can explore halal
 
 ## 🌐 Live Site
 
-🔗 **Live URL:** [QurbaniHat Live Site](https://qurbanihat-sigma.vercel.app/))
+🔗 **Live URL:** [QurbaniHat Live Site](https://qurbanihat-shohag.vercel.app/)
 
 ---
 
 ## 📂 GitHub Repository
 
-🔗 **Repository:** [QurbaniHat GitHub Repo](https://github.com/shohag989/qurbanihat.git))
+🔗 **Repository:** [QurbaniHat GitHub Repo](https://github.com/shohag989/qurbanihat.git)
 
 ---
 
