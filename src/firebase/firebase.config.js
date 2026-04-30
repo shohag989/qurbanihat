@@ -14,8 +14,20 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+// Initialize Firebase only if API key is present
+let app;
+try {
+  if (!firebaseConfig.apiKey) {
+    console.warn("Firebase API Key is missing. Check your environment variables.");
+    // Initialize with dummy values to prevent crashing during build/initial load
+    // but the app will likely fail when calling Firebase services.
+    app = initializeApp({ ...firebaseConfig, apiKey: "dummy-key" });
+  } else {
+    app = initializeApp(firebaseConfig);
+  }
+} catch (error) {
+  console.error("Firebase initialization failed:", error);
+}
 
 // Initialize Firebase services
 export const auth = getAuth(app);
