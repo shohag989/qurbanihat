@@ -20,10 +20,6 @@ A modern and responsive livestock booking platform where users can explore halal
 
 ![Project Preview](https://github.com/shohag989/qurbanihat/blob/main/Cover%20%F0%9F%93%B8.jpg)
 
-> Replace this image link with your own project screenshot.  
-> You can upload your screenshot to [postimages.org](https://postimages.org/) and use the direct image link.
-
----
 
 ## 🎯 Project Purpose
 
