@@ -86,10 +86,10 @@ export default function AnimalDetails() {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 mt-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12">
           {/* Left Column: Images */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/3]">
+            <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/3] md:aspect-auto md:h-[400px] lg:h-[500px]">
               <img
                 src={animal.image}
                 alt={animal.name}
@@ -102,7 +102,7 @@ export default function AnimalDetails() {
               </div>
             </div>
             
-            <div className="bg-cream/30 p-8 rounded-[2rem] border border-gray-100">
+            <div className="bg-cream/30 p-6 md:p-8 rounded-[2rem] border border-gray-100">
               <h3 className="text-xl font-bold text-charcoal mb-4 flex items-center gap-3">
                 <i className="fas fa-info-circle text-primary"></i>
                 About this Animal
@@ -116,22 +116,22 @@ export default function AnimalDetails() {
           {/* Right Column: Details & Booking */}
           <div className="lg:col-span-5">
             <div className="sticky top-28 space-y-8">
-              <div>
+              <div className="text-center md:text-left">
                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-lg text-primary text-xs font-bold uppercase tracking-widest mb-4">
                   <i className="fas fa-certificate"></i>
                   Verified Healthy
                 </div>
                 <h1 className="text-4xl md:text-5xl font-bold text-charcoal mb-4 leading-tight">{animal.name}</h1>
-                <div className="flex items-center gap-3 text-gray-400">
+                <div className="flex items-center justify-center md:justify-start gap-3 text-gray-400">
                   <i className="fas fa-map-marker-alt text-primary/60"></i>
                   <span className="text-lg font-light">{animal.location}, Bangladesh</span>
                 </div>
               </div>
 
-              <div className="bg-white p-8 rounded-[2rem] shadow-2xl border border-gray-50">
-                <div className="mb-8">
+              <div className="bg-white p-6 md:p-8 rounded-[2rem] shadow-2xl border border-gray-50">
+                <div className="mb-8 text-center md:text-left">
                   <span className="text-gray-400 text-sm font-bold uppercase tracking-widest">Fixed Price</span>
-                  <div className="flex items-baseline gap-2 mt-1">
+                  <div className="flex items-baseline justify-center md:justify-start gap-2 mt-1">
                     <span className="text-5xl font-bold text-primary">৳{animal.price.toLocaleString()}</span>
                   </div>
                 </div>

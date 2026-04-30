@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SectionTitle from '../components/SectionTitle';
 import AnimalCard from '../components/AnimalCard';
 import { AnimalCardSkeleton } from '../components/Skeleton';
+import CountUp from '../components/CountUp';
 import heroImage from '../assets/HeroRightAnimals.png';
 
 export default function Home() {
@@ -115,23 +116,23 @@ export default function Home() {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 relative">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left Side */}
-            <div className="space-y-8 text-center lg:text-left">
+            <div className="space-y-8 text-center md:text-left">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-medium">
                 <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
                 Trusted by 5,000+ Happy Customers
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl text-charcoal leading-tight">
-                Book Your <span className="text-primary font-bold">Halal Qurbani</span> Animal with Confidence
+              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-charcoal leading-tight font-extrabold">
+                Book Your <span className="text-primary">Halal Qurbani</span> Animal with Confidence
               </h1>
 
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-xl mx-auto lg:mx-0 font-light">
+              <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-xl mx-auto md:mx-0 font-light">
                 Explore verified cows, goats, and bulls from trusted farms across Bangladesh. Choose healthy livestock, view details, and book easily online.
               </p>
 
-              <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+              <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                 <Link to="/all-animals" className="px-8 py-4 bg-primary text-white rounded-xl hover:shadow-2xl hover:shadow-primary/30 transition-all hover:scale-105 flex items-center gap-3 group font-semibold">
                   Browse Animals
                   <i className="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
@@ -141,7 +142,7 @@ export default function Home() {
                 </a>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 pt-4">
+              <div className="grid grid-cols-2 gap-4 pt-4 max-w-md mx-auto md:mx-0">
                 <div className="flex items-center gap-3 p-4 bg-white/60 backdrop-blur-sm rounded-xl border border-primary/10">
                   <i className="fas fa-check-circle text-primary text-xl"></i>
                   <span className="text-charcoal font-medium text-sm">Verified Livestock</span>
@@ -154,19 +155,19 @@ export default function Home() {
             </div>
 
             {/* Right Side - Hero Image */}
-            <div className="relative mt-8 lg:mt-0">
+            <div className="relative mt-12 md:mt-0">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 rounded-[2.5rem] transform rotate-3 animate-pulse"></div>
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:rotate-0 transition-transform duration-500">
                 <img
                   src={heroImage}
                   alt="Healthy cattle grazing"
-                  className="w-full h-[400px] md:h-[550px] object-cover"
+                  className="w-full h-[400px] md:h-[500px] lg:h-[600px] object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
               </div>
               
               {/* Floating Badge */}
-              <div className="absolute -top-6 -right-6 md:top-6 md:right-6 bg-white/95 backdrop-blur-md px-6 py-4 rounded-2xl shadow-xl border border-primary/10 animate-bounce-slow">
+              <div className="absolute -top-6 -right-6 md:top-6 md:-right-6 lg:-right-10 bg-white/95 backdrop-blur-md px-6 py-4 rounded-2xl shadow-xl border border-primary/10 animate-bounce-slow z-10">
                 <div className="text-3xl font-bold text-primary mb-1">1000+</div>
                 <div className="text-xs text-gray-500 uppercase tracking-widest font-bold">Animals Available</div>
               </div>
@@ -183,20 +184,22 @@ export default function Home() {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 relative">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
             {[
-              { icon: 'fa-users', value: '5,000+', label: 'Happy Customers' },
-              { icon: 'fa-cow', value: '1,000+', label: 'Verified Animals' },
-              { icon: 'fa-home', value: '50+', label: 'Trusted Farms' },
-              { icon: 'fa-chart-line', value: '98%', label: 'Satisfaction Rate' }
+              { icon: 'fa-users', end: 5000, suffix: '+', label: 'Happy Customers' },
+              { icon: 'fa-cow', end: 1000, suffix: '+', label: 'Verified Animals' },
+              { icon: 'fa-home', end: 50, suffix: '+', label: 'Trusted Farms' },
+              { icon: 'fa-chart-line', end: 98, suffix: '%', label: 'Satisfaction Rate' }
             ].map((stat, idx) => (
               <div key={idx} className="text-center space-y-4">
-                <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto border border-white/10 shadow-lg">
-                  <i className={`fas ${stat.icon} text-white text-2xl`}></i>
+                <div className="w-16 h-16 md:w-20 md:h-20 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto border border-white/10 shadow-lg">
+                  <i className={`fas ${stat.icon} text-white text-2xl md:text-3xl`}></i>
                 </div>
                 <div>
-                  <div className="text-3xl md:text-4xl font-bold text-white mb-1">{stat.value}</div>
-                  <div className="text-white/70 text-sm font-medium">{stat.label}</div>
+                  <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-1">
+                    <CountUp end={stat.end} suffix={stat.suffix} />
+                  </div>
+                  <div className="text-white/70 text-sm md:text-base font-medium uppercase tracking-wider">{stat.label}</div>
                 </div>
               </div>
             ))}
@@ -205,13 +208,13 @@ export default function Home() {
       </section>
 
       {/* ================ FEATURED ANIMALS SECTION ================ */}
-      <section className="max-w-7xl mx-auto px-4 py-20 md:py-28">
+      <section className="max-w-7xl mx-auto px-4 py-20 md:py-32">
         <SectionTitle
           title="Featured Qurbani Animals"
           subtitle="Hand-picked healthy animals from trusted farms"
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 mb-16">
           {loading
             ? Array(4)
                 .fill(0)
@@ -222,7 +225,7 @@ export default function Home() {
         </div>
 
         <div className="text-center">
-          <Link to="/all-animals" className="px-8 py-3 bg-primary text-white rounded-xl hover:bg-primary-light transition-all shadow-md font-semibold inline-flex items-center gap-2">
+          <Link to="/all-animals" className="px-10 py-4 bg-primary text-white rounded-xl hover:bg-primary-light transition-all shadow-xl hover:shadow-primary/30 font-bold inline-flex items-center gap-3 hover:scale-105 active:scale-95">
             View All Animals
             <i className="fas fa-chevron-right text-xs"></i>
           </Link>
@@ -230,22 +233,22 @@ export default function Home() {
       </section>
 
       {/* ================ WHY CHOOSE SECTION ================ */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-cream to-white">
+      <section className="py-20 md:py-32 bg-gradient-to-b from-cream to-white">
         <div className="max-w-7xl mx-auto px-4">
           <SectionTitle
             title="Why Choose QurbaniHat?"
             subtitle="Your trusted partner for halal livestock booking"
           />
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
             {whyChoose.map((feature, idx) => (
-              <div key={idx} className="group text-center space-y-6 p-8 rounded-3xl hover:bg-white transition-all duration-500 hover:shadow-2xl border border-transparent hover:border-primary/5">
+              <div key={idx} className="group text-center space-y-6 p-8 rounded-3xl bg-white/50 hover:bg-white transition-all duration-500 hover:shadow-2xl border border-transparent hover:border-primary/5">
                 <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary-light rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:shadow-primary/30 group-hover:scale-110 transition-all duration-500">
                   <i className={`fas ${feature.icon} text-white text-3xl`}></i>
                 </div>
                 <div className="space-y-3">
-                  <h3 className="text-xl font-bold text-charcoal">{feature.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{feature.description}</p>
+                  <h3 className="text-xl md:text-2xl font-bold text-charcoal">{feature.title}</h3>
+                  <p className="text-gray-500 text-sm md:text-base leading-relaxed">{feature.description}</p>
                 </div>
               </div>
             ))}
@@ -254,45 +257,45 @@ export default function Home() {
       </section>
 
       {/* ================ QURBANI TIPS SECTION ================ */}
-      <section id="tips" className="max-w-7xl mx-auto px-4 py-20 md:py-28">
+      <section id="tips" className="max-w-7xl mx-auto px-4 py-20 md:py-32">
         <SectionTitle
           title="Qurbani Preparation Tips"
           subtitle="Essential guidelines for selecting your Qurbani animal"
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {tips.map(tip => (
-            <div key={tip.id} className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 hover:border-primary/20 transition-all duration-300 hover:shadow-2xl">
+            <div key={tip.id} className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 hover:border-primary/20 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
                 <i className={`fas ${tip.icon} text-primary text-xl`}></i>
               </div>
               <h3 className="text-lg font-bold text-charcoal mb-3">{tip.title}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed font-light">{tip.description}</p>
+              <p className="text-gray-500 text-sm md:text-base leading-relaxed font-light">{tip.description}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* ================ TESTIMONIALS SECTION ================ */}
-      <section className="bg-cream/50 py-20 md:py-28">
+      <section className="bg-cream/50 py-20 md:py-32">
         <div className="max-w-7xl mx-auto px-4">
           <SectionTitle
             title="What Our Customers Say"
             subtitle="Real experiences from satisfied customers"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map(testimonial => (
-              <div key={testimonial.id} className="bg-white p-8 rounded-3xl shadow-xl shadow-gray-200/50 border border-white">
+              <div key={testimonial.id} className="bg-white p-8 md:p-10 rounded-3xl shadow-xl shadow-gray-200/50 border border-white hover:shadow-2xl transition-shadow duration-300">
                 <div className="flex items-center gap-4 mb-6">
                   <img
                     src={testimonial.avatar}
                     alt={testimonial.name}
-                    className="w-14 h-14 rounded-full border-2 border-primary/10"
+                    className="w-14 h-14 md:w-16 md:h-16 rounded-full border-2 border-primary/10 object-cover"
                   />
                   <div>
-                    <h4 className="font-bold text-charcoal">{testimonial.name}</h4>
-                    <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">{testimonial.location}</p>
+                    <h4 className="font-bold text-charcoal text-lg">{testimonial.name}</h4>
+                    <p className="text-xs md:text-sm text-gray-400 font-medium uppercase tracking-wider">{testimonial.location}</p>
                   </div>
                 </div>
 
@@ -302,7 +305,7 @@ export default function Home() {
                   ))}
                 </div>
 
-                <p className="text-gray-600 leading-relaxed italic font-light">"{testimonial.text}"</p>
+                <p className="text-gray-600 leading-relaxed italic font-light text-base md:text-lg">"{testimonial.text}"</p>
               </div>
             ))}
           </div>
@@ -310,8 +313,8 @@ export default function Home() {
       </section>
 
       {/* ================ CTA SECTION ================ */}
-      <section className="max-w-7xl mx-auto px-4 py-16">
-        <div className="bg-primary rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden shadow-2xl">
+      <section className="max-w-7xl mx-auto px-4 py-16 md:py-24">
+        <div className="bg-primary rounded-[3rem] p-10 md:p-24 text-center relative overflow-hidden shadow-2xl">
           <div className="absolute inset-0 opacity-10 pointer-events-none">
             <div className="absolute -top-24 -left-24 w-96 h-96 bg-white rounded-full blur-3xl"></div>
             <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
