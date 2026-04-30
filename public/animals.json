@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "name": "Deshi Shahi Cow",
+    "type": "Cow",
+    "breed": "Local Deshi",
+    "price": 120000,
+    "weight": 280,
+    "age": 3,
+    "location": "Bogura",
+    "description": "Healthy deshi cow suitable for Qurbani. Well fed with natural খাবার.",
+    "image": "https://images.pexels.com/photos/735968/pexels-photo-735968.jpeg",
+    "category": "Large Animal"
+  },
+  {
+    "id": 2,
+    "name": "Royal Brahman Bull",
+    "type": "Cow",
+    "breed": "Brahman",
+    "price": 185000,
+    "weight": 420,
+    "age": 4,
+    "location": "Kushtia",
+    "description": "Strong Brahman bull with excellent body shape and healthy diet.",
+    "image": "https://images.pexels.com/photos/422218/pexels-photo-422218.jpeg",
+    "category": "Large Animal"
+  },
+  {
+    "id": 3,
+    "name": "Premium Black Goat",
+    "type": "Goat",
+    "breed": "Black Bengal",
+    "price": 28000,
+    "weight": 32,
+    "age": 2,
+    "location": "Rajshahi",
+    "description": "Beautiful Black Bengal goat, active and perfect for Qurbani.",
+    "image": "https://images.pexels.com/photos/144240/goat-lamb-little-grass-144240.jpeg",
+    "category": "Small Animal"
+  },
+  {
+    "id": 4,
+    "name": "White Jamnapari Goat",
+    "type": "Goat",
+    "breed": "Jamnapari",
+    "price": 42000,
+    "weight": 45,
+    "age": 2,
+    "location": "Sylhet",
+    "description": "Tall and healthy Jamnapari goat with premium appearance.",
+    "image": "https://images.pexels.com/photos/162240/goat-lamb-little-grass-162240.jpeg",
+    "category": "Small Animal"
+  },
+  {
+    "id": 5,
+    "name": "Red Chittagong Cow",
+    "type": "Cow",
+    "breed": "Red Chittagong",
+    "price": 95000,
+    "weight": 240,
+    "age": 3,
+    "location": "Chattogram",
+    "description": "Traditional Red Chittagong cow, naturally raised and healthy.",
+    "image": "https://images.pexels.com/photos/51311/cow-calf-cattle-stock-51311.jpeg",
+    "category": "Large Animal"
+  },
+  {
+    "id": 6,
+    "name": "Healthy Local Goat",
+    "type": "Goat",
+    "breed": "Local",
+    "price": 22000,
+    "weight": 25,
+    "age": 1.5,
+    "location": "Mymensingh",
+    "description": "Affordable local goat suitable for family Qurbani.",
+    "image": "https://images.pexels.com/photos/86594/goat-animal-horns-brown-86594.jpeg",
+    "category": "Small Animal"
+  }
+]
