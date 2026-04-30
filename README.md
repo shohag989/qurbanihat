@@ -1,6 +1,3 @@
-Here is a polished `README.md` for your **QurbaniHat** project. Replace the GitHub, live site, and preview image links with your own.
-
-````md
 # 🐄 QurbaniHat - Livestock Booking Platform
 
 A modern and responsive livestock booking platform where users can explore halal Qurbani animals such as cows, goats, and bulls, view details, and place bookings after authentication.
@@ -281,11 +278,3 @@ Implemented **Lottie React** for animation to make the UI more engaging and mode
 ## 📜 License
 
 This project is created for educational purposes as part of a programming assignment.
-
-````
-
-For the preview image, take a screenshot of your homepage after finishing the design, upload it to **Postimages**, then replace this line:
-
-```md
-![QurbaniHat Preview](https://i.postimg.cc/your-preview-image.png)
-````
