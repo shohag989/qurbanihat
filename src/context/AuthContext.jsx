@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -7,10 +7,10 @@ import {
   updateProfile,
   updateEmail,
   updatePassword,
+  sendEmailVerification,
 } from 'firebase/auth';
 import { auth } from '../firebase/firebase.config';
-
-export const AuthContext = createContext();
+import { AuthContext } from './authContextInstance';
 
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
@@ -23,6 +23,19 @@ export default function AuthProvider({ children }) {
       setError(null);
       const result = await createUserWithEmailAndPassword(auth, email, password);
       return result.user;
+    } catch (error) {
+      setError(error.message);
+      throw error;
+    }
+  };
+
+  // Send email verification
+  const sendVerification = async () => {
+    try {
+      setError(null);
+      if (auth.currentUser) {
+        await sendEmailVerification(auth.currentUser);
+      }
     } catch (error) {
       setError(error.message);
       throw error;
@@ -57,16 +70,13 @@ export default function AuthProvider({ children }) {
   const updateUserProfile = async (displayName, photoURL) => {
     try {
       setError(null);
-      if (user) {
-        await updateProfile(user, {
+      if (auth.currentUser) {
+        await updateProfile(auth.currentUser, {
           displayName,
           photoURL,
         });
-        setUser((prevUser) => ({
-          ...prevUser,
-          displayName,
-          photoURL,
-        }));
+        // We don't manually update user state here because onAuthStateChanged will handle it
+        // Or we can manually update it if we want immediate feedback
       }
     } catch (error) {
       setError(error.message);
@@ -78,12 +88,8 @@ export default function AuthProvider({ children }) {
   const updateUserEmail = async (newEmail) => {
     try {
       setError(null);
-      if (user) {
-        await updateEmail(user, newEmail);
-        setUser((prevUser) => ({
-          ...prevUser,
-          email: newEmail,
-        }));
+      if (auth.currentUser) {
+        await updateEmail(auth.currentUser, newEmail);
       }
     } catch (error) {
       setError(error.message);
@@ -95,8 +101,8 @@ export default function AuthProvider({ children }) {
   const updateUserPassword = async (newPassword) => {
     try {
       setError(null);
-      if (user) {
-        await updatePassword(user, newPassword);
+      if (auth.currentUser) {
+        await updatePassword(auth.currentUser, newPassword);
       }
     } catch (error) {
       setError(error.message);
@@ -119,6 +125,7 @@ export default function AuthProvider({ children }) {
     loading,
     error,
     signup,
+    sendVerification,
     login,
     logout,
     updateUserProfile,
