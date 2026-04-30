@@ -5,7 +5,8 @@ import { useAuth } from '../hooks/useAuth';
 import logo from '../assets/logo.svg';
 
 export default function Register() {
-  const { signup, updateUserProfile, sendVerification, logout } = useAuth();
+  const navigate = useNavigate();
+  const { signup, updateUserProfile, sendVerification, logout, signInWithGoogle } = useAuth();
   const [formData, setFormData] = useState({
     displayName: '',
     email: '',
@@ -22,6 +23,21 @@ export default function Register() {
       ...prev,
       [name]: value
     }));
+  };
+
+  const handleGoogleSignup = async () => {
+    setLoading(true);
+    setError('');
+    try {
+      await signInWithGoogle();
+      toast.success('Successfully registered and logged in with Google!');
+      navigate('/');
+    } catch (err) {
+      setError(err.message);
+      toast.error(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -200,7 +216,12 @@ export default function Register() {
           </div>
 
           {/* Social Signup */}
-          <button className="w-full border-2 border-gray-300 py-3 rounded-lg font-semibold text-gray-700 hover:border-primary hover:text-primary transition">
+          <button 
+            type="button"
+            onClick={handleGoogleSignup}
+            disabled={loading}
+            className="w-full border-2 border-gray-300 py-3 rounded-lg font-semibold text-gray-700 hover:border-primary hover:text-primary transition disabled:opacity-50 disabled:cursor-not-allowed"
+          >
             <i className="fab fa-google mr-2"></i>
             Sign up with Google
           </button>

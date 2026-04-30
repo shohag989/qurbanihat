@@ -6,7 +6,7 @@ import logo from '../assets/logo.svg';
 
 export default function Login() {
   const navigate = useNavigate();
-  const { login, logout } = useAuth();
+  const { login, logout, signInWithGoogle } = useAuth();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -21,6 +21,21 @@ export default function Login() {
       ...prev,
       [name]: value
     }));
+  };
+
+  const handleGoogleLogin = async () => {
+    setLoading(true);
+    setError('');
+    try {
+      await signInWithGoogle();
+      toast.success('Successfully logged in with Google!');
+      navigate('/');
+    } catch (err) {
+      setError(err.message);
+      toast.error(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -160,7 +175,12 @@ export default function Login() {
           </div>
 
           {/* Social Login */}
-          <button className="w-full border-2 border-gray-300 py-3 rounded-lg font-semibold text-gray-700 hover:border-primary hover:text-primary transition mb-4">
+          <button 
+            type="button"
+            onClick={handleGoogleLogin}
+            disabled={loading}
+            className="w-full border-2 border-gray-300 py-3 rounded-lg font-semibold text-gray-700 hover:border-primary hover:text-primary transition mb-4 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
             <i className="fab fa-google mr-2"></i>
             Login with Google
           </button>

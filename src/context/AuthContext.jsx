@@ -8,6 +8,8 @@ import {
   updateEmail,
   updatePassword,
   sendEmailVerification,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from 'firebase/auth';
 import { auth } from '../firebase/firebase.config';
 import { AuthContext } from './authContextInstance';
@@ -16,6 +18,8 @@ export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const googleProvider = new GoogleAuthProvider();
 
   // Create new user account
   const signup = async (email, password) => {
@@ -26,6 +30,21 @@ export default function AuthProvider({ children }) {
     } catch (error) {
       setError(error.message);
       throw error;
+    }
+  };
+
+  // Sign in with Google
+  const signInWithGoogle = async () => {
+    setLoading(true);
+    try {
+      setError(null);
+      const result = await signInWithPopup(auth, googleProvider);
+      return result.user;
+    } catch (error) {
+      setError(error.message);
+      throw error;
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -89,7 +108,7 @@ export default function AuthProvider({ children }) {
     try {
       setError(null);
       if (auth.currentUser) {
-        await updateEmail(auth.currentUser, newEmail);
+        await updateUserEmail(auth.currentUser, newEmail);
       }
     } catch (error) {
       setError(error.message);
@@ -102,7 +121,7 @@ export default function AuthProvider({ children }) {
     try {
       setError(null);
       if (auth.currentUser) {
-        await updatePassword(auth.currentUser, newPassword);
+        await updateUserPassword(auth.currentUser, newPassword);
       }
     } catch (error) {
       setError(error.message);
@@ -125,6 +144,7 @@ export default function AuthProvider({ children }) {
     loading,
     error,
     signup,
+    signInWithGoogle,
     sendVerification,
     login,
     logout,
