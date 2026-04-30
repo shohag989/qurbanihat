@@ -2,6 +2,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import BookingModal from '../components/BookingModal';
+import { AnimalDetailSkeleton } from '../components/Skeleton';
 
 export default function AnimalDetails() {
   const { id } = useParams();
@@ -27,9 +28,14 @@ export default function AnimalDetails() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <i className="fas fa-spinner fa-spin text-4xl text-primary"></i>
-      </div>
+      <main className="bg-white min-h-screen pb-20">
+        <div className="bg-gradient-to-b from-cream to-white pt-8 pb-4">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="w-32 h-8 bg-gray-100 rounded-lg animate-pulse"></div>
+          </div>
+        </div>
+        <AnimalDetailSkeleton />
+      </main>
     );
   }
 

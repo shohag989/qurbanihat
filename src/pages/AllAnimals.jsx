@@ -1,18 +1,25 @@
 import { useState, useEffect } from 'react';
 import AnimalCard from '../components/AnimalCard';
+import { AnimalCardSkeleton } from '../components/Skeleton';
 
 export default function AllAnimals() {
   const [animals, setAnimals] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [filterType, setFilterType] = useState('All');
   const [sortBy, setSortBy] = useState('default');
 
   useEffect(() => {
+    setLoading(true);
     fetch('/animals.json')
       .then(res => res.json())
       .then(data => {
         setAnimals(data);
+        setLoading(false);
       })
-      .catch(err => console.error('Error loading animals:', err));
+      .catch(err => {
+        console.error('Error loading animals:', err);
+        setLoading(false);
+      });
   }, []);
 
   const filteredAnimals = filterType === 'All' 
@@ -82,9 +89,13 @@ export default function AllAnimals() {
 
         {/* Animals Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {filteredAnimals.map(animal => (
-            <AnimalCard key={animal.id} animal={animal} />
-          ))}
+          {loading
+            ? Array(8)
+                .fill(0)
+                .map((_, idx) => <AnimalCardSkeleton key={idx} />)
+            : filteredAnimals.map((animal) => (
+                <AnimalCard key={animal.id} animal={animal} />
+              ))}
         </div>
 
         {filteredAnimals.length === 0 && (

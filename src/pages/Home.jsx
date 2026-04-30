@@ -2,19 +2,26 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SectionTitle from '../components/SectionTitle';
 import AnimalCard from '../components/AnimalCard';
+import { AnimalCardSkeleton } from '../components/Skeleton';
 import heroImage from '../assets/HeroRightAnimals.png';
 
 export default function Home() {
   const [featuredAnimals, setFeaturedAnimals] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Fetch animals from public JSON file
+    setLoading(true);
     fetch('/animals.json')
       .then(res => res.json())
       .then(data => {
         setFeaturedAnimals(data.slice(0, 4)); // Get first 4 for featured
+        setLoading(false);
       })
-      .catch(err => console.error('Error loading animals:', err));
+      .catch(err => {
+        console.error('Error loading animals:', err);
+        setLoading(false);
+      });
   }, []);
 
   const tips = [
@@ -205,9 +212,13 @@ export default function Home() {
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {featuredAnimals.map(animal => (
-            <AnimalCard key={animal.id} animal={animal} />
-          ))}
+          {loading
+            ? Array(4)
+                .fill(0)
+                .map((_, idx) => <AnimalCardSkeleton key={idx} />)
+            : featuredAnimals.map((animal) => (
+                <AnimalCard key={animal.id} animal={animal} />
+              ))}
         </div>
 
         <div className="text-center">
