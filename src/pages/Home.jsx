@@ -74,19 +74,19 @@ export default function Home() {
   const testimonials = [
     {
       id: 1,
-      name: 'Ahmed Rahman',
-      location: 'Dhaka',
+      name: 'Razin Chowdhury',
+      location: 'Sylhet',
       rating: 5,
       text: 'Excellent website! Found a healthy cow easily. The animal was exactly as described. Highly recommended for anyone looking for Qurbani animals.',
-      avatar: 'https://i.pravatar.cc/150?img=1'
+      avatar: 'https://scontent.fjsr15-1.fna.fbcdn.net/v/t39.30808-6/471600286_1150804533274617_7215337919184135312_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=1d70fc&_nc_eui2=AeGuwsW0RV0dZklcJb6N5jAuVtsWPpsc8b9W2xY-mxzxv-ln5UXY7CaWShTWrR-cy4WXeUOQvN7bNPPqJUooyzIL&_nc_ohc=_rKcLiiqFaEQ7kNvwEd47DK&_nc_oc=AdqJNLUxqcZUSRX_CMRIwZ6A45au1u3uYMQ6Lvdnk56tYbNxQ-zIL8OFNTbbpgLIixc&_nc_zt=23&_nc_ht=scontent.fjsr15-1.fna&_nc_gid=YzxVifEnBWPT3CJkU6IL5g&_nc_ss=7b2a8&oh=00_Af49qK_mv4OPD8-y7z7JQtdt2r6lIH0DJ_ZcLELIJxjYUQ&oe=69F988BC'
     },
     {
       id: 2,
-      name: 'Fatima Akhtar',
-      location: 'Chattogram',
+      name: 'Sinikdho Mahmud',
+      location: 'Kurigram',
       rating: 5,
       text: 'Very satisfied with QurbaniHat! Transparent pricing and helpful customer service. Delivery was on time and the animal was in perfect condition.',
-      avatar: 'https://i.pravatar.cc/150?img=47'
+      avatar: 'https://instagram.fjsr15-1.fna.fbcdn.net/v/t51.75761-15/480857022_17901559086131406_3828935458209911941_n.webp?_nc_cat=101&ig_cache_key=MzU3NDI2OTU3NDkxNDA5NTYwOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEwODB4MTA4MC5zZHIuQzMifQ%3D%3D&_nc_ohc=7oAElJ2Oc-8Q7kNvwEm8pMU&_nc_oc=AdpEXPl-tZ-FXGX95touYct40XnjkjpMunn5wL_tI-JY0uxl3xXUwVukE2zTFlcwfG8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fjsr15-1.fna&_nc_gid=8qa7zlgBom3G5Ax6YBI_hg&_nc_ss=7a22e&oh=00_Af2aHVgEHLJeVmN_DM_Goju_KX1-5u7AWAa161cOb-6mLA&oe=69F99DB8'
     },
     {
       id: 3,
@@ -94,7 +94,7 @@ export default function Home() {
       location: 'Sylhet',
       rating: 5,
       text: 'Best platform for Qurbani animal booking! Great selection of healthy animals. The team was very professional and supportive throughout.',
-      avatar: 'https://i.pravatar.cc/150?img=3'
+      avatar: 'https://media.licdn.com/dms/image/v2/C5103AQE65D3GPlLfGA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1568656721509?e=2147483647&v=beta&t=-QfWqDnFWF5aSmrjpIhfvq-pC3mL4irQyql0Dal8sGQ'
     }
   ];
 
