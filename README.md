@@ -53,7 +53,7 @@ This project was created as part of **Assignment Category: category-A8-Pineapple
 ## 🛠️ Tech Stack
 
 <p align="left">
-  <img src="https://skillicons.dev/icons?i=react" alt="React" />
+  <img src="https://skillicons.dev/icons?i=next" alt="React" />
   <img src="https://skillicons.dev/icons?i=vite" alt="Vite" />
   <img src="https://skillicons.dev/icons?i=tailwind" alt="Tailwind CSS" />
   <img src="https://skillicons.dev/icons?i=firebase" alt="Firebase" />
