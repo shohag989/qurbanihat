@@ -1,7 +1,18 @@
-import { Link } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
+'use client';
 
-export default function MyProfile() {
+import Link from 'next/link';
+import { useAuth } from '../../src/hooks/useAuth';
+import PrivateRoute from '../../src/components/PrivateRoute';
+
+export default function MyProfilePage() {
+  return (
+    <PrivateRoute>
+      <MyProfile />
+    </PrivateRoute>
+  );
+}
+
+function MyProfile() {
   const { user, logout } = useAuth();
 
   return (
@@ -26,7 +37,7 @@ export default function MyProfile() {
               <p className="text-gray-600 mb-6">{user?.email}</p>
 
               <div className="flex gap-4">
-                <Link to="/update-profile" className="btn-primary inline-flex items-center gap-2">
+                <Link href="/update-profile" className="btn-primary inline-flex items-center gap-2">
                   <i className="fas fa-edit"></i>
                   Update Profile
                 </Link>

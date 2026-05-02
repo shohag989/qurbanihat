@@ -1,11 +1,14 @@
+'use client';
+
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import toast from 'react-hot-toast';
-import { useAuth } from '../hooks/useAuth';
-import logo from '../assets/logo.svg';
+import { useAuth } from '../../src/hooks/useAuth';
+import logo from '../../src/assets/logo.svg';
 
 export default function Register() {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { signup, updateUserProfile, sendVerification, logout, signInWithGoogle } = useAuth();
   const [formData, setFormData] = useState({
     displayName: '',
@@ -31,7 +34,7 @@ export default function Register() {
     try {
       await signInWithGoogle();
       toast.success('Successfully registered and logged in with Google!');
-      navigate('/');
+      router.push('/');
     } catch (err) {
       setError(err.message);
       toast.error(err.message);
@@ -97,7 +100,7 @@ export default function Register() {
             <div className="bg-primary/5 p-4 rounded-lg mb-8 text-sm text-primary font-medium">
               Check your email & verify, then log in
             </div>
-            <Link to="/login" className="w-full btn-primary py-3 font-semibold text-lg block">
+            <Link href="/login" className="w-full btn-primary py-3 font-semibold text-lg block">
               <i className="fas fa-sign-in-alt mr-2"></i>
               Go to Login
             </Link>
@@ -113,8 +116,8 @@ export default function Register() {
         <div className="bg-white rounded-xl shadow-soft-md p-8">
           {/* Logo */}
           <div className="text-center mb-8">
-            <Link to="/" className="inline-block">
-              <img src={logo} alt="QurbaniHat Logo" className="h-16 w-auto mx-auto mb-2" />
+            <Link href="/" className="inline-block">
+              <img src={logo.src || logo} alt="QurbaniHat Logo" className="h-16 w-auto mx-auto mb-2" />
             </Link>
             <p className="text-gray-600 mt-2">Create your account</p>
           </div>
@@ -229,7 +232,7 @@ export default function Register() {
           {/* Login Link */}
           <p className="text-center text-gray-600 mt-8">
             Already have an account?{' '}
-            <Link to="/login" className="text-primary font-semibold hover:underline">
+            <Link href="/login" className="text-primary font-semibold hover:underline">
               Login here
             </Link>
           </p>
@@ -237,7 +240,7 @@ export default function Register() {
 
         {/* Back Home Link */}
         <div className="text-center mt-6">
-          <Link to="/" className="text-gray-600 hover:text-primary transition inline-flex items-center gap-2">
+          <Link href="/" className="text-gray-600 hover:text-primary transition inline-flex items-center gap-2">
             <i className="fas fa-arrow-left"></i>
             Back to Home
           </Link>

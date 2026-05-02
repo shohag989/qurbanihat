@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom';
+'use client';
+
+import Link from 'next/link';
 import logo from '../assets/logo.svg';
 
 export default function Footer() {
@@ -8,8 +10,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Column 1: About */}
           <div className="col-span-1 lg:col-span-1">
-            <Link to="/" className="inline-block mb-6">
-              <img src={logo} alt="QurbaniHat Logo" className="h-12 w-auto brightness-0 invert" />
+            <Link href="/" className="inline-block mb-6">
+              <img src={logo.src || logo} alt="QurbaniHat Logo" className="h-12 w-auto brightness-0 invert" />
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               QurbaniHat is Bangladesh's leading digital platform for verified halal livestock. We bring the tradition of Qurbani to your fingertips, ensuring health, hygiene, and trust in every booking.
@@ -35,16 +37,16 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold mb-6 text-white border-b border-accent pb-2 inline-block uppercase tracking-wider text-sm">Quick Navigation</h3>
             <ul className="space-y-3 text-sm">
-              <li><Link to="/" className="text-gray-400 hover:text-accent transition-colors flex items-center gap-2">
+              <li><Link href="/" className="text-gray-400 hover:text-accent transition-colors flex items-center gap-2">
                 <i className="fas fa-chevron-right text-[10px] text-accent"></i> Home
               </Link></li>
-              <li><Link to="/all-animals" className="text-gray-400 hover:text-accent transition-colors flex items-center gap-2">
+              <li><Link href="/all-animals" className="text-gray-400 hover:text-accent transition-colors flex items-center gap-2">
                 <i className="fas fa-chevron-right text-[10px] text-accent"></i> All Animals
               </Link></li>
-              <li><Link to="/login" className="text-gray-400 hover:text-accent transition-colors flex items-center gap-2">
+              <li><Link href="/login" className="text-gray-400 hover:text-accent transition-colors flex items-center gap-2">
                 <i className="fas fa-chevron-right text-[10px] text-accent"></i> Account Login
               </Link></li>
-              <li><Link to="/register" className="text-gray-400 hover:text-accent transition-colors flex items-center gap-2">
+              <li><Link href="/register" className="text-gray-400 hover:text-accent transition-colors flex items-center gap-2">
                 <i className="fas fa-chevron-right text-[10px] text-accent"></i> Seller Registration
               </Link></li>
             </ul>

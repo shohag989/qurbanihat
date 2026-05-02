@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import logo from '../assets/logo.svg';
@@ -39,7 +41,7 @@ export default function BookingModal({ animal, user, onClose }) {
             <i className="fas fa-times"></i>
           </button>
           <div className="flex justify-center mb-4">
-            <img src={logo} alt="QurbaniHat Logo" className="h-12 w-auto brightness-0 invert" />
+            <img src={logo.src || logo} alt="QurbaniHat Logo" className="h-12 w-auto brightness-0 invert" />
           </div>
           <h2 className="text-2xl font-bold">Book Your Animal</h2>
           <p className="text-white/80 font-light mt-1">Complete the form to confirm your booking for {animal.name}</p>

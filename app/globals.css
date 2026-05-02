@@ -1,0 +1,74 @@
+@import "tailwindcss";
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
+@theme {
+  --color-primary: #013023;
+  --color-primary-light: #024d38;
+  --color-accent: #d4af37;
+  --color-cream: #faf8f3;
+  --color-charcoal: #013023;
+  
+  --font-sans: 'Poppins', system-ui, sans-serif;
+  --font-serif: 'Merriweather', serif;
+  
+  --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.05);
+  --shadow-soft-md: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    color: var(--color-charcoal);
+  }
+}
+
+@layer components {
+  /* Utility Classes */
+  .btn-primary {
+    @apply px-8 py-3.5 bg-primary text-white rounded-xl font-bold hover:bg-primary-light transition-all duration-300 shadow-lg hover:shadow-primary/20 active:scale-95 flex items-center justify-center gap-2;
+  }
+
+  .btn-secondary {
+    @apply px-8 py-3.5 border-2 border-primary text-primary rounded-xl font-bold hover:bg-primary hover:text-white transition-all duration-300 active:scale-95 flex items-center justify-center gap-2;
+  }
+
+  .btn-outline {
+    @apply px-5 py-2.5 border border-gray-200 rounded-xl text-sm font-bold hover:border-primary hover:text-primary transition-all active:scale-95;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-5xl font-bold text-center mb-4 text-charcoal;
+  }
+
+  .section-subtitle {
+    @apply text-center text-gray-500 mb-12 max-w-2xl mx-auto font-light text-lg;
+  }
+
+  .card-shadow {
+    @apply shadow-lg hover:shadow-2xl transition-all duration-300;
+  }
+}
+
+/* Responsive Customizations */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.5rem;
+  }
+}

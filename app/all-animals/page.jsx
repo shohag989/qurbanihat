@@ -1,6 +1,8 @@
+'use client';
+
 import { useState, useEffect } from 'react';
-import AnimalCard from '../components/AnimalCard';
-import { AnimalCardSkeleton } from '../components/Skeleton';
+import AnimalCard from '../../src/components/AnimalCard';
+import { AnimalCardSkeleton } from '../../src/components/Skeleton';
 
 export default function AllAnimals() {
   const [animals, setAnimals] = useState([]);

@@ -1,5 +1,8 @@
+'use client';
+
 import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import toast from 'react-hot-toast';
 import { useAuth } from '../hooks/useAuth';
 import logo from '../assets/logo.svg';
@@ -7,6 +10,7 @@ import logo from '../assets/logo.svg';
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logout } = useAuth();
+  const pathname = usePathname();
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -28,25 +32,26 @@ export default function Navbar() {
     <nav className="bg-white shadow-soft sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="flex items-center">
-          <img src={logo} alt="QurbaniHat Logo" className="h-12 w-auto" />
+        <Link href="/" className="flex items-center">
+          <img src={logo.src || logo} alt="QurbaniHat Logo" className="h-12 w-auto" />
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <NavLink
-              key={link.path}
-              to={link.path}
-              className={({ isActive }) =>
-                `font-medium transition ${
+          {navLinks.map((link) => {
+            const isActive = pathname === link.path;
+            return (
+              <Link
+                key={link.path}
+                href={link.path}
+                className={`font-medium transition ${
                   isActive ? 'text-primary' : 'text-gray-600 hover:text-primary'
-                }`
-              }
-            >
-              {link.name}
-            </NavLink>
-          ))}
+                }`}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Right Side Buttons */}
@@ -54,7 +59,7 @@ export default function Navbar() {
           {user ? (
             <div className="flex items-center gap-3">
               <Link 
-                to="/profile" 
+                href="/profile" 
                 title={user.displayName || 'Profile'}
                 className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary hover:border-primary/70 transition-all duration-300 shadow-sm hover:shadow-md"
               >
@@ -76,10 +81,10 @@ export default function Navbar() {
             </div>
           ) : (
             <>
-              <Link to="/login" className="text-gray-600 font-medium hover:text-primary transition">
+              <Link href="/login" className="text-gray-600 font-medium hover:text-primary transition">
                 Login
               </Link>
-              <Link to="/register" className="btn-primary">
+              <Link href="/register" className="btn-primary">
                 Register
               </Link>
             </>
@@ -99,26 +104,27 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 py-6 px-4 shadow-lg animate-in fade-in slide-in-from-top-4 duration-300">
           <div className="flex flex-col gap-5">
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.path}
-                to={link.path}
-                onClick={toggleMenu}
-                className={({ isActive }) =>
-                  `text-lg font-medium ${
+            {navLinks.map((link) => {
+              const isActive = pathname === link.path;
+              return (
+                <Link
+                  key={link.path}
+                  href={link.path}
+                  onClick={toggleMenu}
+                  className={`text-lg font-medium ${
                     isActive ? 'text-primary' : 'text-gray-600 hover:text-primary'
-                  }`
-                }
-              >
-                {link.name}
-              </NavLink>
-            ))}
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
             
             <div className="border-t border-gray-100 pt-5 mt-2 flex flex-col gap-4">
               {user ? (
                 <>
                   <Link 
-                    to="/profile" 
+                    href="/profile" 
                     onClick={toggleMenu} 
                     className="flex items-center gap-3 text-gray-700"
                   >
@@ -145,10 +151,10 @@ export default function Navbar() {
                 </>
               ) : (
                 <>
-                  <Link to="/login" onClick={toggleMenu} className="text-gray-600 font-medium py-2 text-center">
+                  <Link href="/login" onClick={toggleMenu} className="text-gray-600 font-medium py-2 text-center">
                     Login
                   </Link>
-                  <Link to="/register" onClick={toggleMenu} className="btn-primary text-center py-3">
+                  <Link href="/register" onClick={toggleMenu} className="btn-primary text-center py-3">
                     Register
                   </Link>
                 </>

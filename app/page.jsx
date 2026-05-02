@@ -1,10 +1,12 @@
+'use client';
+
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import SectionTitle from '../components/SectionTitle';
-import AnimalCard from '../components/AnimalCard';
-import { AnimalCardSkeleton } from '../components/Skeleton';
-import CountUp from '../components/CountUp';
-import heroImage from '../assets/HeroRightAnimals.png';
+import Link from 'next/link';
+import SectionTitle from '../src/components/SectionTitle';
+import AnimalCard from '../src/components/AnimalCard';
+import { AnimalCardSkeleton } from '../src/components/Skeleton';
+import CountUp from '../src/components/CountUp';
+import heroImage from '../src/assets/HeroRightAnimals.png';
 
 export default function Home() {
   const [featuredAnimals, setFeaturedAnimals] = useState([]);
@@ -133,7 +135,7 @@ export default function Home() {
               </p>
 
               <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-                <Link to="/all-animals" className="px-8 py-4 bg-primary text-white rounded-xl hover:shadow-2xl hover:shadow-primary/30 transition-all hover:scale-105 flex items-center gap-3 group font-semibold">
+                <Link href="/all-animals" className="px-8 py-4 bg-primary text-white rounded-xl hover:shadow-2xl hover:shadow-primary/30 transition-all hover:scale-105 flex items-center gap-3 group font-semibold">
                   Browse Animals
                   <i className="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                 </Link>
@@ -159,7 +161,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 rounded-[2.5rem] transform rotate-3 animate-pulse"></div>
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:rotate-0 transition-transform duration-500">
                 <img
-                  src={heroImage}
+                  src={heroImage.src || heroImage}
                   alt="Healthy cattle grazing"
                   className="w-full h-[400px] md:h-[500px] lg:h-[600px] object-cover"
                 />
@@ -225,7 +227,7 @@ export default function Home() {
         </div>
 
         <div className="text-center">
-          <Link to="/all-animals" className="px-10 py-4 bg-primary text-white rounded-xl hover:bg-primary-light transition-all shadow-xl hover:shadow-primary/30 font-bold inline-flex items-center gap-3 hover:scale-105 active:scale-95">
+          <Link href="/all-animals" className="px-10 py-4 bg-primary text-white rounded-xl hover:bg-primary-light transition-all shadow-xl hover:shadow-primary/30 font-bold inline-flex items-center gap-3 hover:scale-105 active:scale-95">
             View All Animals
             <i className="fas fa-chevron-right text-xs"></i>
           </Link>
@@ -325,7 +327,7 @@ export default function Home() {
             <p className="text-lg text-white/80 font-light">
               Browse our collection of verified, healthy livestock and secure your Qurbani animal today with ease and trust.
             </p>
-            <Link to="/all-animals" className="bg-white text-primary px-10 py-5 rounded-2xl font-bold hover:bg-cream transition-all inline-flex items-center gap-3 shadow-xl hover:scale-105 active:scale-95">
+            <Link href="/all-animals" className="bg-white text-primary px-10 py-5 rounded-2xl font-bold hover:bg-cream transition-all inline-flex items-center gap-3 shadow-xl hover:scale-105 active:scale-95">
               Browse Animals Now
               <i className="fas fa-arrow-right"></i>
             </Link>

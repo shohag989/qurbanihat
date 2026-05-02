@@ -1,12 +1,15 @@
-import { useParams, useNavigate } from 'react-router-dom';
+'use client';
+
+import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { useAuth } from '../hooks/useAuth';
-import BookingModal from '../components/BookingModal';
-import { AnimalDetailSkeleton } from '../components/Skeleton';
+import { useAuth } from '../../../src/hooks/useAuth';
+import BookingModal from '../../../src/components/BookingModal';
+import { AnimalDetailSkeleton } from '../../../src/components/Skeleton';
 
 export default function AnimalDetails() {
-  const { id } = useParams();
-  const navigate = useNavigate();
+  const params = useParams();
+  const id = params.id;
+  const router = useRouter();
   const { user } = useAuth();
   const [animal, setAnimal] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -44,7 +47,7 @@ export default function AnimalDetails() {
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center">
           <p className="text-2xl mb-4">Animal not found</p>
-          <button onClick={() => navigate(-1)} className="btn-primary">
+          <button onClick={() => router.back()} className="btn-primary">
             Go Back
           </button>
         </div>
@@ -54,7 +57,7 @@ export default function AnimalDetails() {
 
   const handleBook = () => {
     if (!user) {
-      navigate('/login');
+      router.push('/login');
       return;
     }
     setShowBookingModal(true);
@@ -74,7 +77,7 @@ export default function AnimalDetails() {
       <div className="bg-gradient-to-b from-cream to-white pt-8 pb-4">
         <div className="max-w-6xl mx-auto px-4">
           <button 
-            onClick={() => navigate(-1)} 
+            onClick={() => router.back()} 
             className="group flex items-center gap-2 text-gray-500 hover:text-primary transition-colors font-medium"
           >
             <div className="w-8 h-8 rounded-lg bg-white shadow-sm flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">

@@ -1,11 +1,22 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast';
-import { useAuth } from '../hooks/useAuth';
+'use client';
 
-export default function UpdateProfile() {
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
+import { useAuth } from '../../src/hooks/useAuth';
+import PrivateRoute from '../../src/components/PrivateRoute';
+
+export default function UpdateProfilePage() {
+  return (
+    <PrivateRoute>
+      <UpdateProfile />
+    </PrivateRoute>
+  );
+}
+
+function UpdateProfile() {
   const { user, updateUserProfile } = useAuth();
-  const navigate = useNavigate();
+  const router = useRouter();
   const [formData, setFormData] = useState({
     displayName: user?.displayName || '',
     photoURL: user?.photoURL || '',
@@ -29,7 +40,7 @@ export default function UpdateProfile() {
     try {
       await updateUserProfile(formData.displayName, formData.photoURL);
       toast.success('Profile updated successfully!');
-      navigate('/profile');
+      router.push('/profile');
     } catch (err) {
       setError(err.message);
       toast.error(err.message);

@@ -1,18 +1,21 @@
+'use client';
+
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useAuth } from '../hooks/useAuth';
 import BookingModal from './BookingModal';
 
 export default function AnimalCard({ animal }) {
   const { user } = useAuth();
-  const navigate = useNavigate();
+  const router = useRouter();
   const [showBookingModal, setShowBookingModal] = useState(false);
 
   const handleBookClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
     if (!user) {
-      navigate('/login');
+      router.push('/login');
       return;
     }
     setShowBookingModal(true);
@@ -28,7 +31,7 @@ export default function AnimalCard({ animal }) {
         />
       )}
       <Link 
-        to={`/animal/${animal.id}`}
+        href={`/animal/${animal.id}`}
         className="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-primary/20 hover:-translate-y-2 flex flex-col h-full cursor-pointer"
       >
         {/* Image Section */}

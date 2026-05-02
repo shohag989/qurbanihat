@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 export default function NotFound() {
   return (
@@ -10,7 +10,7 @@ export default function NotFound() {
         <p className="text-gray-500 mb-12 max-w-md">
           The page you're looking for doesn't exist. Please check the URL or go back to the home page.
         </p>
-        <Link to="/" className="btn-primary inline-flex items-center gap-2">
+        <Link href="/" className="btn-primary inline-flex items-center gap-2">
           <i className="fas fa-home"></i>
           Back to Home
         </Link>
